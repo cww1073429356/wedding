@@ -129,81 +129,82 @@ Page({
    * 复制图片信息
    */
   copyFile: function() {
-    wx.request({
-      url: api.mobileIn,
-      method: 'GET',
-      header: {
-        method: 'COPY_FILE',
-      },
-      data: {
-        openId: app.globalData.openId
+    // wx.request({
+    //   url: api.mobileIn,
+    //   method: 'GET',
+    //   header: {
+    //     method: 'COPY_FILE',
+    //   },
+    //   data: {
+    //     openId: app.globalData.openId
 
-      },
-      success: function(res) {
-        console.log(res)
+    //   },
+    //   success: function(res) {
+    //     console.log(res)
 
-      },
-      error: function() {
+    //   },
+    //   error: function() {
       
-      }
-    })
+    //   }
+    // })
   },
   /**
    * 获取宿主用户信息
    */
   getUser: function () {
     var that = this
-    wx.request({
-      url: api.mobileIn,
-      method: 'GET',
-      header: {
-        method: 'GET_HOST_USER',
-      },
-      data: {
-        openId: app.globalData.openId
+    // wx.request({
+    //   url: api.mobileIn,
+    //   method: 'GET',
+    //   header: {
+    //     method: 'GET_HOST_USER',
+    //   },
+    //   data: {
+    //     openId: app.globalData.openId
 
-      },
-      success: function (res) {
-        if (200 == res.statusCode) {
-          if (res.data.length >= 1) {
-            //是否展示广告位
-            app.globalData.isShowAd = res.data[0][8]
-            console.log("app.globalData.isShowAd", app.globalData.isShowAd)
-            //自己创建小程序了
-            if (undefined == app.globalData.hostUserId) {
-              app.globalData.hostUserId = app.globalData.openId
-            } 
-          }else{
-            //展示官方实例
-            app.globalData.hostUserId = 'osaod0ZlCZxFk3qxoDRrrx9lRvU8'
-            app.globalData.isCreate = false
-          }
-          that.goHome()
-        }else{
-          //展示官方实例
-          app.globalData.isCreate = false
-          app.globalData.hostUserId = 'osaod0ZlCZxFk3qxoDRrrx9lRvU8'
-          wx.showModal({
-            title: '提示',
-            content: '获取openId失败，是否进入？',
-            showCancel: false,//是否显示取消按钮
-            confirmText: "进入",//默认是“确定”
-            success: function (res) {
-              if (res.cancel) {
-                //点击取消,默认隐藏弹框
-              } else {
-                //点击确定
-                that.goHome()
-              }
-            }
-          })
-        }
+    //   },
+    //   success: function (res) {
+    //     if (200 == res.statusCode) {
+    //       if (res.data.length >= 1) {
+    //         //是否展示广告位
+    //         app.globalData.isShowAd = res.data[0][8]
+    //         console.log("app.globalData.isShowAd", app.globalData.isShowAd)
+    //         //自己创建小程序了
+    //         if (undefined == app.globalData.hostUserId) {
+    //           app.globalData.hostUserId = app.globalData.openId
+    //         } 
+    //       }else{
+    //         //展示官方实例
+    //         app.globalData.hostUserId = 'osaod0ZlCZxFk3qxoDRrrx9lRvU8'
+    //         app.globalData.isCreate = false
+    //       }
+    //       that.goHome()
+    //     }else{
+    //       //展示官方实例
+    //       app.globalData.isCreate = false
+    //       app.globalData.hostUserId = 'osaod0ZlCZxFk3qxoDRrrx9lRvU8'
+    //       wx.showModal({
+    //         title: '提示',
+    //         content: '获取openId失败，是否进入？',
+    //         showCancel: false,//是否显示取消按钮
+    //         confirmText: "进入",//默认是“确定”
+    //         success: function (res) {
+    //           if (res.cancel) {
+    //             //点击取消,默认隐藏弹框
+    //           } else {
+    //             //点击确定
+    //             that.goHome()
+    //           }
+    //         }
+    //       })
+    //     }
        
-      },
-      error: function () {
-        app.globalData.isCreate = false
-        that.goHome()
-      }
-    })
+    //   },
+    //   error: function () {
+    //     app.globalData.isCreate = false
+    //     that.goHome()
+    //   }
+    // })
+    that.goHome()
   }
 })
